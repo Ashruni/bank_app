@@ -31,4 +31,6 @@ Route::get('users/input/{id}',[App\Http\Controllers\DepositInputController::clas
 Route::post('deposited',[App\Http\Controllers\DepositingAmountController::class,'store'])->name('depositing');
 Route::get('withdrawing/{id}',[App\Http\Controllers\UserWithdrawingController::class,'index'])->name('user-withdrawing-amount');
 Route::post('withdrawing/from/Account',[App\Http\Controllers\UserWithdrawingFromAccountController::class,'store'])->name('withdrawing-amount-from-account');
+Route::get('current/balance/user/account/{id}',[App\Http\Controllers\UserAccountCurrentBalanceController::class,'show'])->name('user_viewing_current_balance');
+Route::get('transaction/history/user/{id}',[App\Http\Controllers\UserTransactionHistoryController::class,'index'])->name('show-transaction-history-to-user');
 

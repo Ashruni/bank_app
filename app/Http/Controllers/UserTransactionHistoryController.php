@@ -5,17 +5,23 @@ use DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class UserWithdrawingController extends Controller
+class UserTransactionHistoryController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index($id)
     {
+        $acNumber = DB::table('users')->select('account_number')->where('id',$id)->value('account_number');
 
-        $acNumb = DB::table('users')->select('account_number')->where('id', $id)->value('account_number');
-        
-        return view('withdraw_input_field')->with('acNumb', $acNumb);
+        $details = DB::table('users')->where('id', $id)->first();
+        $accountDetails = DB::table('account_transfer_details')->where('ac_number', $acNumber)->get();
+        $deposits = DB::table('account_transfer_details')->where('ac_number',$acNumber)->sum('account_transfer_details.deposits');
+        $withdraw = DB::table('account_transfer_details')->where('ac_number',$acNumber)->sum('account_transfer_details.withdraw');
+        $currentBalance =$deposits-$withdraw ;
+
+
+        return view('user-transaction-details')->with('details', $details)->with('accountDetails',$accountDetails)->with('currentBalance',$currentBalance);
     }
 
     /**

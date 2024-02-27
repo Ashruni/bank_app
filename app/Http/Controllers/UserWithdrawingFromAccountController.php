@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\AccountTransferDetails;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-
+use DB;
 class UserWithdrawingFromAccountController extends Controller
 {
     /**
@@ -28,12 +28,26 @@ class UserWithdrawingFromAccountController extends Controller
      */
     public function store(Request $request)
     {
-       
+        $ac_no =$request->ac_number;
+
+        $deposits = DB::table('account_transfer_details')->where('ac_number', $ac_no)->sum('account_transfer_details.deposits');
+        $withdrawals = DB::table('account_transfer_details')->where('ac_number',$ac_no)->sum('account_transfer_details.withdraw');
+        $balance = $deposits-$withdrawals;
+        $amount = $request->withdraw;
+        if($balance < $amount  ){
+            return "You cant withdraw  ₹{$amount} your current account balance  ₹{$balance } ";
+        }
+        else{
+
         $user_create = AccountTransferDetails::create([
             'ac_number'=>$request['ac_number'],
             'withdraw'=>$request['withdraw'],
         ]);
         return view('success');
+
+        }
+
+
     }
 
     /**

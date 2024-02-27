@@ -79,6 +79,20 @@
      <h4><a href="{{route('deposit_amount_input',ucfirst(Auth()->user()->id))}}">ADD DEPOSIT</a></h4>
 </div>
     </div>
+    <div class="col-sm-4">
+    <div class="well">
+
+     <h4><a href="{{route('show-transaction-history-to-user',ucfirst(Auth()->user()->id))}}">TRANSACTION HISTORY</a></h4>
+</div>
+    </div>
+
+
+    <div class="col-sm-4">
+    <div class="well">
+
+     <h4><a href="{{route('user_viewing_current_balance',ucfirst(Auth()->user()->id))}}">CURRENT BALANCE</a></h4>
+</div>
+    </div>
 
 
     <div class="col-sm-4">

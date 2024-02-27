@@ -5,17 +5,14 @@ use DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class UserWithdrawingController extends Controller
+class UserAccountCurrentBalanceController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index($id)
+    public function index()
     {
-
-        $acNumb = DB::table('users')->select('account_number')->where('id', $id)->value('account_number');
-        
-        return view('withdraw_input_field')->with('acNumb', $acNumb);
+        //
     }
 
     /**
@@ -39,9 +36,15 @@ class UserWithdrawingController extends Controller
      */
     public function show(string $id)
     {
-        //
-    }
+        $acNumb = DB::table('users')->select('account_number')->where('id', $id)->value('account_number');
+        $deposits = DB::table('account_transfer_details')->where('ac_number', $acNumb)->sum('account_transfer_details.deposits');
+        $withdraw= DB::table('account_transfer_details')->where('ac_number',$acNumb)->sum('account_transfer_details.withdraw');
+        $currentBalance= $deposits - $withdraw;
+        $aboutUser = DB::table('users')->where('id',$id)->first();
+        return view('current_balance')->with('currentBalance',$currentBalance)->with('aboutUser',$aboutUser);
 
+
+    }
     /**
      * Show the form for editing the specified resource.
      */
