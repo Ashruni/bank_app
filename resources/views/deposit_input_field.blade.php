@@ -13,7 +13,7 @@
       <input type="number" placeholder="Enter Account Number" name="ac_number" value="{{$acNum}}" readonly><br>
       <input type="number" placeholder=" amount" name="deposit" min='200' max='20000'><br>
 
-      <button type="submit">Login</button>
+      <button type="submit">Deposit</button>
     </form>
 
 </body>

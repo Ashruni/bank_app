@@ -14,13 +14,13 @@
   <div class="login-container">
     <form action="{{route('adding_new_user')}}" method="post">
         @csrf
-      <input type="text" placeholder="Enter Username" name="name"><br>
-      <input type="password" placeholder="Enter Password" name="password"><br>
-      <input type="email" placeholder="Enter Email" name="email"><br>
-      <input type="number" placeholder="Enter Mobile" name="mobile"><br>
-      <input type="number" placeholder="Enter Ac number" name="account_number"><br>
-      <input type="text" placeholder="Address" name="address"><br>
-      <button type="submit">Login</button>
+      <input type="text" placeholder="Enter Username" name="name" required><br>
+      <input type="password" placeholder="Enter Password" name="password" required><br>
+      <input type="email" placeholder="Enter Email" name="email" required><br>
+      <input type="tel" placeholder="Enter Mobile" name="mobile" pattern="^[789]\d{9}$" required><br>
+      <input type="text" placeholder="Enter Ac number" name="account_number"    required><br>
+      <input type="text" placeholder="Address" name="address" required><br>
+      <button type="submit">submit</button>
     </form>
   </div>
 </div>

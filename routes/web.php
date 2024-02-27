@@ -22,7 +22,7 @@ Route::get('login',[App\Http\Controllers\AdminLoginControllers::class,'index']);
 Route::get('add_new_user',[App\Http\Controllers\UserAddInputFieldController::class,'index']);
 Route::post('logged/in',[App\Http\Controllers\AdminLoginAuthenticationController::class,'loginAuth'])->name('login_details');
 Route::get('admin_dashboard',[App\Http\Controllers\AdminDashboardControllers::class,'index'])->name('admin_dashboard');
-Route::post('storing/user/info',[App\Http\Controllers\UserInputFieldControllers::class,'store'])->name('adding_new_user');
+Route::match(['GET','POST'],'storing/user/info',[App\Http\Controllers\UserInputFieldControllers::class,'store'])->name('adding_new_user');
 Route::get('click/',[App\Http\Controllers\ClickedControllers::class,'index'])->name('clicked_here');
 Route::get('view/user/table',[App\Http\Controllers\UsersTableControllers::class,'index'])->name('view_user_details');
 Route::get('view/users/table/view',[App\Http\Controllers\UsersTableViewControllers::class,'index']);
@@ -33,4 +33,7 @@ Route::get('withdrawing/{id}',[App\Http\Controllers\UserWithdrawingController::c
 Route::post('withdrawing/from/Account',[App\Http\Controllers\UserWithdrawingFromAccountController::class,'store'])->name('withdrawing-amount-from-account');
 Route::get('current/balance/user/account/{id}',[App\Http\Controllers\UserAccountCurrentBalanceController::class,'show'])->name('user_viewing_current_balance');
 Route::get('transaction/history/user/{id}',[App\Http\Controllers\UserTransactionHistoryController::class,'index'])->name('show-transaction-history-to-user');
+Route::get('admin/searching/account',[App\Http\Controllers\AdminSearchingAccountController::class,'index'])->name('admin_searching_account');
+Route::post('admin/posting/search/account',[App\Http\Controllers\AdminSearchAccountControllers::class,'index'])->name('admin_posting_search_data');
+
 

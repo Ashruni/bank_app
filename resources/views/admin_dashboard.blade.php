@@ -48,7 +48,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      
+
       <a class="navbar-brand" href="#">BANK ADMIN</a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
@@ -78,11 +78,17 @@
      <h4><a href="{{route('clicked_here')}}">ADD A NEW USER</a></h4>
 </div>
     </div>
+    <div class="col-sm-4">
+    <div class="well">
+     <h4><a href="{{route('admin_searching_account')}}">SEARCH ACCOUNT</a></h4>
+</div>
+    </div>
 
     <div class="col-sm-4">
       <div class="well">
        <h4><a href="{{route('view_user_details')}}">USERS DETAILS</h4></p>
       </div>
+
       <!-- <div class="col-sm-4">
       <div class="well">
        <h4><a href="">USERS REPORTS</h4></p>

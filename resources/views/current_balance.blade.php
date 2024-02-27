@@ -38,14 +38,14 @@ h2{
     <th>Name</th>
     <th>Account Number</th>
 
-    <th>Current Balance</th>
+    <th><strong>Current Balance</strong></th>
   </tr>
   <tr>
 
     <td>{{$aboutUser->name}}</td>
     <td>{{$aboutUser->account_number}}</td>
 
-    <td>{{$currentBalance}}</td>
+    <td><strong>{{$currentBalance}}</strong></td>
   </tr>
 
 </table>
