@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -12,8 +12,8 @@ class DepositInputController extends Controller
      */
     public function index($id)
     {
-        DB::table('users')->select();
-        return view('deposit_input_field');
+        $acNum = DB::table('users')->select('account_number')->where('id', $id)->value('account_number');
+        return view('deposit_input_field')->with('acNum', $acNum);
     }
 
     /**

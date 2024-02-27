@@ -9,8 +9,9 @@
     <h1>DEPOSIT AMOUNT</h1>
 <form action="{{route('depositing')}}" method="post">
         @csrf
-      <input type="number" placeholder="Enter Account Number" name="ac_number"><br>
-      <input type="number" placeholder="Enter the deposit amount" name="deposit"><br>
+
+      <input type="number" placeholder="Enter Account Number" name="ac_number" value="{{$acNum}}" readonly><br>
+      <input type="number" placeholder=" amount" name="deposit" min='200' max='20000'><br>
 
       <button type="submit">Login</button>
     </form>

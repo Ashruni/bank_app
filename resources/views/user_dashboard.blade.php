@@ -83,7 +83,7 @@
 
     <div class="col-sm-4">
       <div class="well">
-       <h4><a href="{{route('user-withdrawing-amount')}}">WITHDRAW AMOUNT</h4></p>
+       <h4><a href="{{route('user-withdrawing-amount',ucfirst(Auth()->user()->id))}}">WITHDRAW AMOUNT</h4></p>
       </div>
       <!-- <div class="col-sm-4">
       <div class="well">

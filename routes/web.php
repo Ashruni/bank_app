@@ -29,5 +29,6 @@ Route::get('view/users/table/view',[App\Http\Controllers\UsersTableViewControlle
 Route::get('users/dashboard',[App\Http\Controllers\UserDashboardController::class,'index'])->name('user_dashboard');
 Route::get('users/input/{id}',[App\Http\Controllers\DepositInputController::class,'index'])->name('deposit_amount_input');
 Route::post('deposited',[App\Http\Controllers\DepositingAmountController::class,'store'])->name('depositing');
-Route::get('withdrawing',[App\Http\Controllers\UserWithdrawingController::class,'index'])->name('user-withdrawing-amount');
+Route::get('withdrawing/{id}',[App\Http\Controllers\UserWithdrawingController::class,'index'])->name('user-withdrawing-amount');
+Route::post('withdrawing/from/Account',[App\Http\Controllers\UserWithdrawingFromAccountController::class,'store'])->name('withdrawing-amount-from-account');
 

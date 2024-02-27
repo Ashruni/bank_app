@@ -1,19 +1,18 @@
 <?php
 
 namespace App\Http\Controllers;
-use DB;
+use App\Models\AccountTransferDetails;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class UserWithdrawingController extends Controller
+class UserWithdrawingFromAccountController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index($id)
+    public function index()
     {
-        $acNumb = DB::table('users')->select('account_number')->where('id', $id)->value('account_number');
-        return view('withdraw_input_field')->with('acNumb', $acNumb);
+        //
     }
 
     /**
@@ -29,7 +28,12 @@ class UserWithdrawingController extends Controller
      */
     public function store(Request $request)
     {
-        //
+       
+        $user_create = AccountTransferDetails::create([
+            'ac_number'=>$request['ac_number'],
+            'withdraw'=>$request['withdraw'],
+        ]);
+        return view('success');
     }
 
     /**
